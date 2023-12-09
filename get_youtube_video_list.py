@@ -2,17 +2,38 @@ import os
 import google.auth
 from googleapiclient.discovery import build
 import json
-keys_json = 'keys.json'
-with open(keys_json) as keys_data:
-    keys = json.load(keys_data)
-
-api_key = keys['youtube_api_key']
-channel_id = keys["channel_id"]
-
-if not api_key:
-    raise ValueError("api key not found! please place it inside keys.json")
-if not channel_id:
-    raise ValueError("channel id not found! please place it inside keys.json")
 
 
+def get_video_list(channel_id, api_key, output_file):
+    print("fetching latest videos")
+    youtube = build('youtube', 'v3', developerKey=api_key)
+    next_page_token = None
+    total_results = []
+    while True:
+        playlist_items = youtube.playlistItems().list(
+            part='snippet',
+            maxResults=50,
+            playlistId=channel_id,
+            pageToken = next_page_token
+        ).execute()
+        filtered_items = []
+        for item in playlist_items.get('items', []):
+            snippet = item.get('snippet', {})
+            resourceId = snippet.get('resourceId', {})
+            filtered_item = {
+                'title': snippet.get('title'),
+                'publishedAt': snippet.get('publishedAt'),
+                'videoId': resourceId.get('videoId'),
+            }
+            filtered_items.append(filtered_item)
+        total_results.extend(filtered_items)
+        
+        next_page_token = playlist_items.get('nextPageToken')
+        if not next_page_token:
+            break
 
+    # Write the extracted data to a JSON file
+    with open(output_file, 'w') as json_file:
+        json.dump(total_results, json_file, indent=2)
+
+    print(f'Data has been written to {output_file}')
