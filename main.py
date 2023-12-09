@@ -2,6 +2,9 @@ import os
 import json
 from get_youtube_video_list import get_video_list
 keys_json = 'keys.json'
+if not keys_json:
+    print("keys.json created. place the required stuff there")
+    quit()
 with open(keys_json) as keys_data:
     keys = json.load(keys_data)
 
@@ -11,7 +14,8 @@ discord_webhook = keys["discord_webhook"]
 
 video_list = "video_list.json"
 
-if not (discord_webhook):
+
+if not discord_webhook:
     print("discord webhook not found! please place it inside keys.json")
     quit()
 if not api_key:
