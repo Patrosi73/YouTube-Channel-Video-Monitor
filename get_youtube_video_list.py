@@ -34,3 +34,4 @@ def get_video_list(channel_id, api_key, output_file):
     with open(output_file, 'w') as json_file:
         json.dump(total_results, json_file, indent=2)
     print(f'video metadata has been downloaded to {output_file}')
+
