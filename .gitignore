@@ -161,3 +161,4 @@ cython_debug/
 keys.json
 video_list.json
 video_list_check.json
+differences.json

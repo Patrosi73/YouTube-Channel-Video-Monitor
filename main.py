@@ -1,6 +1,6 @@
 import os
 import json
-
+from check_jsons import find_json_differences
 from get_youtube_video_list import get_video_list
 keys_json = 'keys.json'
 
@@ -51,6 +51,10 @@ if not os.path.exists("video_list.json"):
     get_video_list(channel_id, api_key, video_list)
 
 print("all checks passed, starting now")
-if os.path.exists("video_list.json"):
-    print("downloading video_list_check.json:")
-    get_video_list(channel_id, api_key, video_list_check)
+print("downloading video_list_check.json:")
+get_video_list(channel_id, api_key, video_list_check)
+with open("video_list.json", "r") as f1:
+    video_list = json.loads(f1.read())
+with open("video_list_check.json", "r") as f2:
+    video_list_check = json.loads(f2.read())
+find_json_differences(video_list_check, video_list, "differences.json")

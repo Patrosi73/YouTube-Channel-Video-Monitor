@@ -7,6 +7,6 @@ def find_json_differences(data1, data2, output_path):
     with open(output_path, 'w') as file:
         json.dump(combined_difference, file, indent=2)
 
-    print("changes written to {output_path}")
+    print(f"changes written to {output_path}")
 
 
