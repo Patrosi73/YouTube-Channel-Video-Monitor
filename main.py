@@ -8,7 +8,8 @@ if not os.path.exists("keys.json"):
 {
     "youtube_api_key" : "",
     "discord_webhook" : "",
-    "channel_id" : ""
+    "channel_id" : "",
+    "userid_to_ping" : ""
 }
 """
     with open("keys.json", "w") as file1:
@@ -22,10 +23,12 @@ with open(keys_json) as keys_data:
 api_key = keys['youtube_api_key']
 channel_id = keys["channel_id"]
 discord_webhook = keys["discord_webhook"]
+userid_to_ping = keys["userid_to_ping"]
 
 video_list = "video_list.json"
+video_list_check = "video_list_check.json"
 
-
+print("checking keys.json")
 if not discord_webhook:
     print("discord webhook not found! please place it inside keys.json")
     quit()
@@ -35,8 +38,14 @@ if not api_key:
 if not channel_id:
     print("channel id not found! please place it inside keys.json")
     quit()
-    
-get_video_list(channel_id, api_key, video_list)
+if not userid_to_ping:
+    print("discord user id to ping now found! please place it inside keys.json")
+    quit()
+
+print("all checks passed, starting now")
+get_video_list(channel_id, api_key, video_list_check)
+
+
 
 
 

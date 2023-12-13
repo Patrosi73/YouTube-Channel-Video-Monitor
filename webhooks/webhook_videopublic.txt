@@ -1,0 +1,10 @@
+{
+    "content": "<@" + userid + "> New video was found!",
+    "embeds": [
+      {
+        "title": "New video has been made public!",
+        "description": "Video with title " + title + " has appeared in the database.\n\nVideo URL: https://youtube.com/watch?v=" + video_id_compare +"\nOriginal upload date and time: " + video_time,
+        "color": 45824
+      }
+    ]
+  }
