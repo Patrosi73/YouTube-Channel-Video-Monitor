@@ -1,5 +1,6 @@
 import os
 import json
+
 from get_youtube_video_list import get_video_list
 keys_json = 'keys.json'
 
@@ -26,7 +27,9 @@ discord_webhook = keys["discord_webhook"]
 userid_to_ping = keys["userid_to_ping"]
 
 video_list = "video_list.json"
+
 video_list_check = "video_list_check.json"
+
 
 print("checking keys.json")
 if not discord_webhook:
@@ -51,10 +54,3 @@ print("all checks passed, starting now")
 if os.path.exists("video_list.json"):
     print("downloading video_list_check.json:")
     get_video_list(channel_id, api_key, video_list_check)
-
-
-
-
-
-
-
