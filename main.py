@@ -42,8 +42,17 @@ if not userid_to_ping:
     print("discord user id to ping now found! please place it inside keys.json")
     quit()
 
+print("checking for video_list.json")
+if not os.path.exists("video_list.json"):
+    print("first video_list.json not found, downloading now - this should only run once")
+    get_video_list(channel_id, api_key, video_list)
+
 print("all checks passed, starting now")
-get_video_list(channel_id, api_key, video_list_check)
+if os.path.exists("video_list.json"):
+    print("downloading video_list_check.json:")
+    get_video_list(channel_id, api_key, video_list_check)
+
+
 
 
 
