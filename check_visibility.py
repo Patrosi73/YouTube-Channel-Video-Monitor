@@ -15,6 +15,9 @@ tosd_video = ["This video has been removed for violating YouTube's Terms of Serv
 copyrighted_video = ["This video contains content from", "Video unavailable"]
 
 browser = webdriver.Firefox()
+
+total_results = []
+
 try:
     for video in video_list:
         videoId = video.get('videoId', '')
@@ -61,11 +64,9 @@ try:
                 pass
         
         result = {"videoId": videoId, "title": title, "status": status}
-        with open('visibility.json', 'a') as result_file:
-            json.dump(result, result_file, indent=2)
-            result_file.write(',\n')
-        
-        
-
+        total_results.append(result)
 finally:
     browser.quit()
+
+with open('video_visibility.json', 'w') as result_file:
+    json.dump(total_results, result_file, indent=2)

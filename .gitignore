@@ -170,4 +170,4 @@ differences.json
 chromedriver.exe
 geckodriver.exe
 result.json
-visibility.json
+video_visibility.json
