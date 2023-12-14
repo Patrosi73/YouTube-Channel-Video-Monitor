@@ -1,10 +1,10 @@
 {
-    "content": "<@" + userid + "> Video privated!",
+    "content": "<@{userid}> Video privated!",
     "embeds": [
-      {
-        "title": "Video has been privated!",
-        "description": "Video with title " + title + " has been privated by its creator. \n\nVideo URL: https://youtube.com/watch?v=" + video_id_compare +"\nOriginal upload date and time: " + video_time,
-        "color": 45824
-      }
+        {
+            "title": "Video has been privated!",
+            "description": "Video with title {title} has been privated from YouTube by the creator.\n\nVideo URL: https://youtube.com/watch?v={video_id_compare} \nOriginal upload date and time: {video_time}",
+            "color": 16766720
+        }
     ]
-  }
+}

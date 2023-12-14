@@ -1,10 +1,10 @@
 {
-    "content": "<@" + userid + "> Video deleted!",
+    "content": "<@{userid}> Video deleted!",
     "embeds": [
-      {
-        "title": "Video has been deleted!",
-        "description": "Video with title " + title + " has been removed from YouTube by the creator. \n\nVideo URL: https://youtube.com/watch?v=" + video_id_compare +"\nOriginal upload date and time: " + video_time,
-        "color": 45824
-      }
+        {
+            "title": "Video has been deleted!",
+            "description": "Video with title {title} has been deleted from YouTube by the creator.\n\nVideo URL: https://youtube.com/watch?v={video_id_compare} \nOriginal upload date and time: {video_time}",
+            "color": 8421504
+        }
     ]
-  }
+}

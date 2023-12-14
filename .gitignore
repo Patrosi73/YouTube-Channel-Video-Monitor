@@ -171,3 +171,4 @@ chromedriver.exe
 geckodriver.exe
 result.json
 video_visibility.json
+.vscode

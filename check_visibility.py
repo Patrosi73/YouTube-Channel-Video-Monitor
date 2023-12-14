@@ -1,7 +1,7 @@
 import json
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
@@ -22,6 +22,7 @@ try:
     for video in video_list:
         videoId = video.get('videoId', '')
         title = video.get('title', '')
+        publishedAt = video.get('publishedAt', '')
         url = f"https://www.youtube.com/watch?v={videoId}"
         browser.get(url)
         wait = WebDriverWait(browser, 1)
@@ -51,19 +52,19 @@ try:
         for phrase in tosd_video:
             try:
                 element = wait.until(EC.text_to_be_present_in_element((By.TAG_NAME, "body"), phrase))
-                status = "deleted"
+                status = "tosd"
                 break
             except TimeoutException:
                 pass
         for phrase in copyrighted_video:
             try:
                 element = wait.until(EC.text_to_be_present_in_element((By.TAG_NAME, "body"), phrase))
-                status = "deleted"
+                status = "copyrighted"
                 break
             except TimeoutException:
                 pass
         
-        result = {"videoId": videoId, "title": title, "status": status}
+        result = {"videoId": videoId, "title": title, "status": status, "publishedAt": publishedAt}
         total_results.append(result)
 finally:
     browser.quit()
