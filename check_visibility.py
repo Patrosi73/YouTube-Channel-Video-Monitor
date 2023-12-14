@@ -26,12 +26,12 @@ try:
         url = f"https://www.youtube.com/watch?v={videoId}"
         browser.get(url)
         wait = WebDriverWait(browser, 1)
-
+        print(f"checking visibility of video ID {videoId}")
         status = "public"
         for phrase in private_video:
             try:
                 element = wait.until(EC.text_to_be_present_in_element((By.TAG_NAME, "body"), phrase))
-                status = "private"
+                status = "privated"
                 break
             except TimeoutException:
                 pass
@@ -63,7 +63,6 @@ try:
                 break
             except TimeoutException:
                 pass
-        
         result = {"videoId": videoId, "title": title, "status": status, "publishedAt": publishedAt}
         total_results.append(result)
 finally:
@@ -71,3 +70,4 @@ finally:
 
 with open('video_visibility.json', 'w') as result_file:
     json.dump(total_results, result_file, indent=2)
+print("visibility written to video_visibility.json")
