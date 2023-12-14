@@ -52,9 +52,14 @@ if not os.path.exists("video_list.json"):
 
 print("all checks passed, starting now")
 print("downloading video_list_check.json:")
+
 get_video_list(channel_id, api_key, video_list_check)
+print("now comparing with previous JSON")
 with open("video_list.json", "r") as f1:
     video_list = json.loads(f1.read())
 with open("video_list_check.json", "r") as f2:
     video_list_check = json.loads(f2.read())
 find_json_differences(video_list_check, video_list, "differences.json")
+print("now checking the video's visibility (will open a browser - if it errors out here make sure you put geckodriver.exe in PATH)")
+with open("check_visibility.py") as f:
+    exec(f.read())
