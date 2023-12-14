@@ -3,12 +3,6 @@ import requests
 import time
 from datetime import datetime
 keys_json = "keys.json"
-copyrighted = "webhooks/webhook_videocopyrighted.txt"
-deleted = "webhooks/webhook_videodeleted.txt"
-private = "webhooks/webhook_videoprivated.txt"
-public = "webhooks/webhook_videopublic.txt"
-tosd = "webhooks/webhook_tosd.txt"
-unlisted = "webhooks/webhook_videounlisted.txt"
 with open(keys_json) as keys_data:
     keys = json.load(keys_data)
 
