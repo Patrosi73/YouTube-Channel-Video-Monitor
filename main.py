@@ -12,7 +12,7 @@ if not os.path.exists("keys.json"):
     "discord_webhook" : "",
     "channel_id" : "",
     "userid_to_ping" : ""
-    "sleep_time_after_finish" : "900"
+    "sleep_time_after_finish" : 900
 }
 """
     with open("keys.json", "w") as file1:
@@ -32,24 +32,6 @@ sleep_time_after_finish = keys["sleep_time_after_finish"]
 video_list = "video_list.json"
 
 video_list_check = "video_list_check.json"
-
-
-print("checking keys.json")
-if not discord_webhook:
-    print("discord webhook not found! please place it inside keys.json")
-    quit()
-if not api_key:
-    print("api key not found! please place it inside keys.json")
-    quit()
-if not channel_id:
-    print("channel id not found! please place it inside keys.json")
-    quit()
-if not userid_to_ping:
-    print("discord user id to ping not found! please place it inside keys.json")
-    quit()
-if not sleep_time_after_finish:
-    print("sleep time after script finishes not found! place it inside keys.json")
-    quit()
 
 print("checking for video_list.json")
 if not os.path.exists("video_list.json"):
