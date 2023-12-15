@@ -1,5 +1,5 @@
 # YouTube-Channel-Video-Monitor
-Periodically check if a video on a YouTube channel is made public, private, unlisted, or was deleted.
+Periodically check if a YouTube channel made videos public, private, unlisted, or deleted them.
 
 # Requirements
 - Python
