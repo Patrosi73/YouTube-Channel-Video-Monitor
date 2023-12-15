@@ -48,7 +48,7 @@ while True:
     with open("video_list_check.json", "r") as f2:
         video_list_check = json.loads(f2.read())
     find_json_differences(video_list_check, video_list, "differences.json")
-    print("now checking the video's visibility (will open a browser - if it errors out here make sure you put geckodriver.exe in PATH)")
+    print("now checking the video's visibility (will open a browser)")
     with open("check_visibility.py") as f:
         exec(f.read())
     print("sending webhook message(s)")
