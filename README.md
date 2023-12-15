@@ -3,7 +3,7 @@ Periodically check if a YouTube channel made videos public, private, unlisted, o
 
 # Requirements
 - Python
-- Google API Key (get one at https://console.cloud.google.com/)
+- Google API Key (get one at https://console.cloud.google.com/ - specifically the YouTube Data API v3)
 - Discord Webhook
 - Your Discord User ID
 
