@@ -11,7 +11,7 @@ if not os.path.exists("keys.json"):
     "youtube_api_key" : "",
     "discord_webhook" : "",
     "channel_id" : "",
-    "userid_to_ping" : ""
+    "userid_to_ping" : "",
     "sleep_time_after_finish" : 900
 }
 """
